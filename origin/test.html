@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0027)http://itzoo.info/love.html -->
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Test</title>
+</head>
+
+<body>
+    <div id="main">
+
+    </div>
+    <script>
+        function handleMicroData() {
+            // 是否是微前端环境
+            if (window.__MICRO_APP_ENVIRONMENT__) {
+                // 主动获取基座下发的数据
+                console.log('origin getData:', window.microApp.getData())
+
+                // 监听基座下发的数据变化
+                window.microApp.addDataListener((data) => {
+                    console.log('origin addDataListener:', data)
+                })
+                // 向基座发送数据
+                setTimeout(() => {
+                    window.microApp.dispatch({ myname: 'origin' })
+                }, 3000)
+            }
+        }
+        handleMicroData();
+    </script>
+</body>
+
+
+</html>
